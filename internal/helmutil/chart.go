@@ -19,20 +19,10 @@ type Chart interface {
 }
 
 // LoadChart returns chart loaded from the file system by path.
-func LoadChart(fpath string) (Chart, error) {
-	if IsHelm3() {
-		return loadChartV3(fpath)
-	}
-	return loadChartV2(fpath)
-}
+func LoadChart(fpath string) (Chart, error) { _ = "STUB: not implemented"; return *new(Chart), nil }
 
 // LoadArchive returns chart loaded from the archive file reader.
-func LoadArchive(r io.Reader) (Chart, error) {
-	if IsHelm3() {
-		return loadArchiveV3(r)
-	}
-	return loadArchiveV2(r)
-}
+func LoadArchive(r io.Reader) (Chart, error) { _ = "STUB: not implemented"; return *new(Chart), nil }
 
 // ChartMetadata describes helm chart metadata.
 type ChartMetadata interface {
@@ -47,9 +37,4 @@ type ChartMetadata interface {
 }
 
 // NewChartMetadata returns a new helm chart metadata.
-func NewChartMetadata() ChartMetadata {
-	if IsHelm3() {
-		return newChartMetadataV3()
-	}
-	return newChartMetadataV2()
-}
+func NewChartMetadata() ChartMetadata { _ = "STUB: not implemented"; return *new(ChartMetadata) }

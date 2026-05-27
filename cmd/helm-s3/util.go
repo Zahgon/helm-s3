@@ -1,7 +1,5 @@
 package main
 
-import "github.com/hypnoglow/helm-s3/internal/awsutil"
-
 type printer interface {
 	Printf(format string, v ...interface{})
 	PrintErrf(format string, i ...interface{})
@@ -18,10 +16,4 @@ type printer interface {
 //     with the "s3://example-bucket" baseURL will become
 //     "s3://example-bucket/petstore-1.0.0%252B102.tgz".
 //     So if we ever decide to escape, we need to fix this.
-func escapeIfRelative(filename string, relative bool) string {
-	if !relative {
-		return filename
-	}
-
-	return awsutil.EscapePath(filename)
-}
+func escapeIfRelative(filename string, relative bool) string { _ = "STUB: not implemented"; return "" }

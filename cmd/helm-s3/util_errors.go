@@ -1,8 +1,6 @@
 package main
 
 import (
-	"errors"
-
 	"github.com/spf13/cobra"
 )
 
@@ -13,48 +11,22 @@ const (
 	errorTypeSilent
 )
 
-func (t errorType) Is(err error) bool {
-	if err == nil {
-		return false
-	}
-
-	var target interface{ errorType() errorType }
-	return errors.As(err, &target) && target.errorType() == t
-}
+func (t errorType) Is(err error) bool { _ = "STUB: not implemented"; return false }
 
 type customError struct {
 	errType errorType
 	err     error
 }
 
-func (c customError) Error() string {
-	return c.err.Error()
-}
+func (c customError) Error() string { _ = "STUB: not implemented"; return "" }
 
-func (c customError) errorType() errorType {
-	return c.errType
-}
+func (c customError) errorType() errorType { _ = "STUB: not implemented"; return *new(errorType) }
 
-func newBadUsageError(err error) error {
-	return customError{
-		errType: errorTypeBadUsage,
-		err:     err,
-	}
-}
+func newBadUsageError(err error) error { _ = "STUB: not implemented"; return nil }
 
-func newSilentError() error {
-	return customError{
-		errType: errorTypeSilent,
-		err:     errors.New(""),
-	}
-}
+func newSilentError() error { _ = "STUB: not implemented"; return nil }
 
 func wrapPositionalArgsBadUsage(f cobra.PositionalArgs) cobra.PositionalArgs {
-	return func(cmd *cobra.Command, args []string) error {
-		err := f(cmd, args)
-		if err != nil {
-			return newBadUsageError(err)
-		}
-		return nil
-	}
+	_ = "STUB: not implemented"
+	return *new(cobra.PositionalArgs)
 }

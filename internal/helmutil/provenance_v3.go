@@ -2,14 +2,8 @@ package helmutil
 
 import (
 	"io"
-
-	"helm.sh/helm/v3/pkg/provenance"
 )
 
-func digestV3(in io.Reader) (string, error) {
-	return provenance.Digest(in)
-}
+func digestV3(in io.Reader) (string, error) { _ = "STUB: not implemented"; return "", nil }
 
-func digestFileV3(filename string) (string, error) {
-	return provenance.DigestFile(filename)
-}
+func digestFileV3(filename string) (string, error) { _ = "STUB: not implemented"; return "", nil }

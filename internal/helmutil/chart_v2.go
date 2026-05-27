@@ -1,11 +1,8 @@
 package helmutil
 
 import (
-	"encoding/json"
-	"fmt"
 	"io"
 
-	"k8s.io/helm/pkg/chartutil"
 	"k8s.io/helm/pkg/proto/hapi/chart"
 )
 
@@ -14,56 +11,30 @@ type ChartV2 struct {
 	chart *chart.Chart
 }
 
-func (c ChartV2) Name() string {
-	return c.chart.GetMetadata().GetName()
-}
+func (c ChartV2) Name() string { _ = "STUB: not implemented"; return "" }
 
-func (c ChartV2) Version() string {
-	return c.chart.GetMetadata().GetVersion()
-}
+func (c ChartV2) Version() string { _ = "STUB: not implemented"; return "" }
 
-func (c ChartV2) Metadata() ChartMetadata {
-	return &chartMetadataV2{meta: c.chart.GetMetadata()}
-}
+func (c ChartV2) Metadata() ChartMetadata { _ = "STUB: not implemented"; return *new(ChartMetadata) }
 
 func loadChartV2(fpath string) (ChartV2, error) {
-	ch, err := chartutil.LoadFile(fpath)
-	if err != nil {
-		return ChartV2{}, fmt.Errorf("failed to load chart file: %s", err.Error())
-	}
-	return ChartV2{chart: ch}, nil
+	_ = "STUB: not implemented"
+	return *new(ChartV2), nil
 }
 
 func loadArchiveV2(r io.Reader) (ChartV2, error) {
-	ch, err := chartutil.LoadArchive(r)
-	if err != nil {
-		return ChartV2{}, fmt.Errorf("failed to load chart archive: %s", err.Error())
-	}
-	return ChartV2{chart: ch}, nil
+	_ = "STUB: not implemented"
+	return *new(ChartV2), nil
 }
 
 type chartMetadataV2 struct {
 	meta *chart.Metadata
 }
 
-func (c *chartMetadataV2) MarshalJSON() ([]byte, error) {
-	if c.meta == nil {
-		return nil, nil
-	}
-	return json.Marshal(c.meta)
-}
+func (c *chartMetadataV2) MarshalJSON() ([]byte, error) { _ = "STUB: not implemented"; return nil, nil }
 
-func (c *chartMetadataV2) UnmarshalJSON(b []byte) error {
-	if c.meta == nil {
-		c.meta = &chart.Metadata{}
-	}
-	return json.Unmarshal(b, c.meta)
-}
+func (c *chartMetadataV2) UnmarshalJSON(b []byte) error { _ = "STUB: not implemented"; return nil }
 
-func (c *chartMetadataV2) Value() interface{} {
-	return c.meta
-}
+func (c *chartMetadataV2) Value() interface{} { _ = "STUB: not implemented"; return nil }
 
-func newChartMetadataV2() *chartMetadataV2 {
-	return &chartMetadataV2{meta: &chart.Metadata{}}
-}
+func newChartMetadataV2() *chartMetadataV2 { _ = "STUB: not implemented"; return nil }

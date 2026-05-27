@@ -28,10 +28,8 @@ type RepoEntry interface {
 // If repositories.yaml file is not found, errors.Is(err, fs.ErrNotExist) will
 // return true.
 func LookupRepoEntry(name string) (RepoEntry, error) {
-	if IsHelm3() {
-		return lookupV3(name)
-	}
-	return lookupV2(name)
+	_ = "STUB: not implemented"
+	return *new(RepoEntry), nil
 }
 
 // LookupRepoEntryByURL returns an entry from helm's repositories.yaml file by
@@ -39,8 +37,6 @@ func LookupRepoEntry(name string) (RepoEntry, error) {
 // If repositories.yaml file is not found, errors.Is(err, fs.ErrNotExist) will
 // return true.
 func LookupRepoEntryByURL(url string) (RepoEntry, bool, error) {
-	if IsHelm3() {
-		return lookupByURLV3(url)
-	}
-	return lookupByURLV2(url)
+	_ = "STUB: not implemented"
+	return *new(RepoEntry), false, nil
 }

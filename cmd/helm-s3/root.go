@@ -1,9 +1,6 @@
 package main
 
 import (
-	"context"
-	"os"
-
 	"github.com/spf13/cobra"
 )
 
@@ -46,53 +43,11 @@ charts, you definitely want to increase the timeout.
 You can enable verbose output with '--verbose' flag.
 `
 
-func newRootCmd() *cobra.Command {
-	ctx, cancel := context.WithCancel(context.Background())
+func newRootCmd() *cobra.Command { _ = "STUB: not implemented"; return nil }
 
-	opts := newDefaultOptions()
+// Completion is disabled for now.
+// Also, see: https://helm.sh/docs/topics/plugins/#static-auto-completion
 
-	cmd := &cobra.Command{
-		Use:   "s3",
-		Short: "Manage chart repositories on Amazon S3",
-		Long:  rootDesc,
-		PersistentPreRun: func(cmd *cobra.Command, args []string) {
-			ctx, cancel = context.WithTimeout(cmd.Context(), opts.timeout)
-			cmd.SetContext(ctx)
-		},
-		PersistentPostRun: func(cmd *cobra.Command, args []string) {
-			cancel()
-		},
-		// Completion is disabled for now.
-		// Also, see: https://helm.sh/docs/topics/plugins/#static-auto-completion
-		CompletionOptions: cobra.CompletionOptions{
-			DisableDefaultCmd: true,
-		},
-		// The command may produce system error, even if the usage is correct.
-		SilenceUsage: true,
-		// We handle errors by ourselves.
-		SilenceErrors: true,
-	}
+// The command may produce system error, even if the usage is correct.
 
-	flags := cmd.PersistentFlags()
-	flags.StringVar(&opts.acl, "acl", opts.acl, "S3 Object ACL to use for charts and indexes. Can be sourced from S3_ACL environment variable.")
-	flags.DurationVar(&opts.timeout, "timeout", opts.timeout, "Timeout for the whole operation to complete.")
-	flags.BoolVar(&opts.verbose, "verbose", opts.verbose, "Enable verbose output.")
-
-	cmd.SetFlagErrorFunc(func(command *cobra.Command, err error) error {
-		return newBadUsageError(err)
-	})
-
-	cmd.SetOut(os.Stdout)
-	cmd.SetErr(os.Stderr)
-
-	cmd.AddCommand(
-		newDownloadCommand(),
-		newInitCommand(opts),
-		newPushCommand(opts),
-		newReindexCommand(opts),
-		newDeleteCommand(opts),
-		newVersionCommand(),
-	)
-
-	return cmd
-}
+// We handle errors by ourselves.

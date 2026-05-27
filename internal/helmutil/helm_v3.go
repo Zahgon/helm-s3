@@ -8,10 +8,7 @@ import (
 )
 
 // setupHelm3 sets up environment and function bindings for helm v3.
-func setupHelm3() {
-	helm3Env = cli.New()
-	helm3LoadRepoFile = repo.LoadFile
-}
+func setupHelm3() { _ = "STUB: not implemented"; return }
 
 var (
 	helm3Env *cli.EnvSettings
@@ -21,10 +18,6 @@ var (
 	helm3LoadRepoFile func(path string) (*repo.File, error)
 )
 
-func repoFilePathV3() string {
-	return helm3Env.RepositoryConfig
-}
+func repoFilePathV3() string { _ = "STUB: not implemented"; return "" }
 
-func cacheDirPathV3() string {
-	return helm3Env.RepositoryCache
-}
+func cacheDirPathV3() string { _ = "STUB: not implemented"; return "" }

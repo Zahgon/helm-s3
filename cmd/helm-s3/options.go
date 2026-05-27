@@ -1,7 +1,6 @@
 package main
 
 import (
-	"os"
 	"time"
 )
 
@@ -13,10 +12,4 @@ type options struct {
 }
 
 // newDefaultOptions returns default options.
-func newDefaultOptions() *options {
-	return &options{
-		timeout: 5 * time.Minute,
-		acl:     os.Getenv("S3_ACL"),
-		verbose: false,
-	}
-}
+func newDefaultOptions() *options { _ = "STUB: not implemented"; return nil }

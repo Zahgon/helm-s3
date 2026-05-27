@@ -46,17 +46,7 @@ type Index interface {
 }
 
 // NewIndex returns a new Index based either on Helm v2 or Helm v3.
-func NewIndex() Index {
-	if IsHelm3() {
-		return newIndexV3()
-	}
-	return newIndexV2()
-}
+func NewIndex() Index { _ = "STUB: not implemented"; return *new(Index) }
 
 // LoadIndex loads index from the file.
-func LoadIndex(fpath string) (Index, error) {
-	if IsHelm3() {
-		return loadIndexV3(fpath)
-	}
-	return loadIndexV2(fpath)
-}
+func LoadIndex(fpath string) (Index, error) { _ = "STUB: not implemented"; return *new(Index), nil }

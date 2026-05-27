@@ -2,14 +2,8 @@ package helmutil
 
 import (
 	"io"
-
-	"k8s.io/helm/pkg/provenance"
 )
 
-func digestV2(in io.Reader) (string, error) {
-	return provenance.Digest(in)
-}
+func digestV2(in io.Reader) (string, error) { _ = "STUB: not implemented"; return "", nil }
 
-func digestFileV2(filename string) (string, error) {
-	return provenance.DigestFile(filename)
-}
+func digestFileV2(filename string) (string, error) { _ = "STUB: not implemented"; return "", nil }
